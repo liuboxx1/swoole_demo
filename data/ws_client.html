@@ -12,9 +12,9 @@
 <script src="../source/jquery-3.3.1.slim.min.js"></script>
 <script>
   
-  var wsUrl = "ws://47.93.238.141:1433";
+  let wsUrl = "ws://47.93.238.141:1433";
   
-  var websocket = new WebSocket(wsUrl);
+  let websocket = new WebSocket(wsUrl);
 
   //实例化对象的onOpen属性
   websocket.onopen = function(evt) {
