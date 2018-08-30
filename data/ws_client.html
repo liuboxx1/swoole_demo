@@ -27,7 +27,7 @@
   //实例化 onmessage  
   websocket.onmessage = function(evt) {
     console.log('ws - server - return - data: ' + evt.data);
-      $('.record').append("<span class='content'>" + evt.data + "</span>");
+      $('.record').append("<span class='content'>" + evt.data + "</span><br />");
   }
 
   //实例化 onclose
