@@ -1,6 +1,6 @@
 <?php
 
-$server = new swoole_websocket_server("0.0.0.0");
+$server = new swoole_websocket_server("0.0.0.0", 1433);
 
 //监听websocket连接打开事件
 $server->on('open', 'onOpen');

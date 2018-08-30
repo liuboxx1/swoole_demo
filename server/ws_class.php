@@ -7,7 +7,7 @@ class Ws {
     public static $server;
 
     public function __construct() {
-        static::$server = new swoole_websocket_server(static::HOST, static::PORT);
+        static::$server = new swoole_websocket_server(static::HOST);
         
         static::$server->on('open', [$this, 'onOpen']); //监听连接
 
