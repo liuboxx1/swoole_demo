@@ -9,6 +9,9 @@
 
 <input class="input" type="text" />
 <button class="send">发送</button>
+<div class="record">
+    <span class="content">聊天记录</span>
+</div>
 <script src="../source/jquery-3.3.1.slim.min.js"></script>
 <script>
   
@@ -24,7 +27,8 @@
 
   //实例化 onmessage  
   websocket.onmessage = function(evt) {
-    console.log('ws - server - return - data: ' + evt.data);
+    // console.log('ws - server - return - data: ' + evt.data);
+      $('record').appendChild("<span class='content'>" + evt.data + "</span>");
   }
 
   //实例化 onclose
