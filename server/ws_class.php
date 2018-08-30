@@ -33,7 +33,7 @@ class Ws {
         echo "receive from {$frame->fd} : {$frame->data}, opcode : {$frame->opcode}, fin : {$frame->finish} \n";
         $fdArray = static::$redis->smember('fd');
         foreach ($fdArray as $value) {
-            $server->push($value, $frame->data . '\n');
+            $server->push($value, $frame->data . '<br />');
         }
 //        $server->push($frame->fd, $frame->data);
     }
