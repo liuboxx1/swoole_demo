@@ -21,5 +21,13 @@ class Redis_cli
     {
         $this->redis->connect(static::IP, static::PORT);
     }
+    public function sadd($key, $value)
+    {
+        $this->redis->sAdd($key, $value);
+    }
+    public function srem($key, $value)
+    {
+        $this->redis->sRem($key, $value);
+    }
 
 }
