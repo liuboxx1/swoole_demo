@@ -17,13 +17,9 @@ class Redis_cli
         $this->redis = new  Redis();
         $this->connect();
     }
-
     public function connect()
     {
         $this->redis->connect(static::IP, static::PORT);
-        echo $this->redis->ping();
     }
 
 }
-
-$redid = new  Redis_cli();
