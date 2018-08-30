@@ -5,22 +5,26 @@ class Ws {
     const HOST = '0.0.0.0';
     const PORT = 1433;
     public static $server;
+    public static $redis;
 
     public function __construct($redis) {
+
+        static::$redis = $redis;
+
         static::$server = new swoole_websocket_server(static::HOST, static::PORT);
         
-        static::$server->on('open',     [$this, 'onOpen', $redis]); //监听连接
+        static::$server->on('open',     [$this, 'onOpen']); //监听连接
 
         static::$server->on('message',  [$this, 'onMessage']);  //监听消息
 
-	    static::$server->on('close',    [$this, 'onClose', $redis]);  //监听关闭连接
+	    static::$server->on('close',    [$this, 'onClose']);  //监听关闭连接
 
         static::$server->start();
     }
 
-    public function onOpen($server, $request, $redis)
+    public function onOpen($server, $request)
     {
-        $redis->sadd('fd', $request->fd);
+        static::$redis->sadd('fd', $request->fd);
         print_r($request->fd);
     }
 
@@ -30,10 +34,10 @@ class Ws {
         $server->push($frame->fd, $frame->data);
     }
 
-    public function onClose($server, $fd, $redis)
+    public function onClose($server, $fd)
     {
         echo "client {$fd} closed \n";
-        $redis->srem('fd', $fd);
+        static::$redis->srem('fd', $fd);
     }
 }
 require_once '../vendor/Redis.php';
