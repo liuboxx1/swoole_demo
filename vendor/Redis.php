@@ -20,6 +20,7 @@ class Redis_cli
     public function connect()
     {
         $this->redis->connect(static::IP, static::PORT);
+        $this->redis->select(0);
     }
     public function sadd($key, $value)
     {
