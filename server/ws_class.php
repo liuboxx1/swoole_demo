@@ -34,3 +34,5 @@ class Ws {
         echo "client {$fd} closed \n";
     }
 }
+
+$ws = new Ws();
