@@ -33,6 +33,4 @@ class Ws {
     {
         echo "client {$fd} closed \n";
     }
-    
 }
-$websocket = new Ws();
