@@ -7,6 +7,9 @@
 
 <h1>  websocket    </h1>
 
+<input class="input" type="text" />
+<button class="send">发送</button>
+<script src="../source/jquery-3.3.1.slim.min.js"></script>
 <script>
   
   var wsUrl = "ws://47.93.238.141:1433";
@@ -33,6 +36,13 @@
   websocket.onerror = function(evt) {
     console.log("error: " + evt.data)
   }
+
+  $('.send').click(function () {
+      text = $('input').val();
+      websocket.send(text);
+  })
+
+
 
 </script>
 
