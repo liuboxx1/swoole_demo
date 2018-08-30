@@ -31,7 +31,11 @@ class Ws {
     public function onMessage($server, $frame)
     {
         echo "receive from {$frame->fd} : {$frame->data}, opcode : {$frame->opcode}, fin : {$frame->finish} \n";
-        $server->push($frame->fd, $frame->data);
+        $fdArray = static::$redis->smember('fd');
+        foreach ($fdArray as $value) {
+            $server->push($value, $frame->data);
+        }
+//        $server->push($frame->fd, $frame->data);
     }
 
     public function onClose($server, $fd)

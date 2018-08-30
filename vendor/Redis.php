@@ -30,5 +30,9 @@ class Redis_cli
     {
         $this->redis->sRem($key, $value);
     }
+    public function smember($key)
+    {
+        return $this->redis->sMembers($key);
+    }
 
 }
