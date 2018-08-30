@@ -6,7 +6,7 @@
  * Time: 18:38
  */
 
-class Redis
+class Redis_cli
 {
     public $redis;
     const IP = '127.0.0.1';
@@ -25,3 +25,5 @@ class Redis
     }
 
 }
+
+$redid = new  Redis_cli();
