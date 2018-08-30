@@ -37,6 +37,3 @@ class Ws {
 }
 $websocket = new Ws();
 
-#biubiubiu
-#ahdfpasdfhjpd
-#dfgfdasfsaasfasdf
