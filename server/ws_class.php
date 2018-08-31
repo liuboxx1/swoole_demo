@@ -22,6 +22,7 @@ class Ws {
         static::$server->on('message',  [$this, 'onMessage']);  //监听消息
 
         static::$server->on('task',     [$this, 'onTask']);  //开启任务
+        static::$server->on('finish',   [$this, 'onFinish']);  //开启任务
 
 	    static::$server->on('close',    [$this, 'onClose']);  //监听关闭连接
 
