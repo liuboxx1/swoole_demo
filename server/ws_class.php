@@ -39,13 +39,13 @@ class Ws {
     {
         echo "receive from {$frame->fd} : {$frame->data}, opcode : {$frame->opcode}, fin : {$frame->finish} \n";
 
-        print_r($frame->data);
         static::$server->task($frame->data, 0);
 
     }
     public function onTask($server, $task_id, $data)
     {
         $fdArray = static::$redis->smember('fd');
+        print_r('######' . $data .'#####');
         foreach ($fdArray as $value) {
             $server->push($value, $data);
         }
