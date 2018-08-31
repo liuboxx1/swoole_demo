@@ -40,7 +40,6 @@ class Ws {
         echo "receive from {$frame->fd} : {$frame->data}, opcode : {$frame->opcode}, fin : {$frame->finish} \n";
 
         static::$server->task($frame->data, 0);
-        print_r($server->connections);
 
     }
     public function onTask($server, $task_id, $worker_id, $data)

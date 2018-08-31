@@ -1,11 +1,11 @@
 <html>
  <head>
-  <title>websocket客户端</title>
+  <title>私人聊天室</title>
   <meta charset='utf-8'/>
 </head>
 <body>
 
-<h1>  websocket    </h1>
+<h1>  私人聊天室    </h1>
 
 <input class="input" type="text" />
 <button class="send">发送</button>
@@ -43,6 +43,7 @@
   $('.send').click(function () {
       text = $('input').val();
       websocket.send(text);
+      $('input').val('');
   })
 
 
