@@ -42,10 +42,9 @@ class Ws {
         static::$server->task($frame->data, 0);
 
     }
-    public function onTask($server, $task_id, $data)
+    public function onTask($server, $task_id, $worker_id, $data)
     {
         $fdArray = static::$redis->smember('fd');
-        print_r('######' . $data .'#####');
         foreach ($fdArray as $value) {
             $server->push($value, $data);
         }
