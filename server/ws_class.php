@@ -12,10 +12,16 @@ class Ws {
         static::$redis = $redis;
 
         static::$server = new swoole_websocket_server(static::HOST, static::PORT);
+
+        static::$server->set(array(
+            'task_worker_num' => 8
+        ));
         
         static::$server->on('open',     [$this, 'onOpen']); //监听连接
 
         static::$server->on('message',  [$this, 'onMessage']);  //监听消息
+
+        static::$server->on('task',     [$this, 'onTask']);  //开启任务
 
 	    static::$server->on('close',    [$this, 'onClose']);  //监听关闭连接
 
@@ -31,11 +37,20 @@ class Ws {
     public function onMessage($server, $frame)
     {
         echo "receive from {$frame->fd} : {$frame->data}, opcode : {$frame->opcode}, fin : {$frame->finish} \n";
+
+        static::$server->task($frame->data, 0);
+
+    }
+    public function onTask($server, $task_id, $data)
+    {
         $fdArray = static::$redis->smember('fd');
         foreach ($fdArray as $value) {
-            $server->push($value, $frame->data);
+            $server->push($value, $data);
         }
-//        $server->push($frame->fd, $frame->data);
+    }
+    public function onFinish($server, $task_id, $data)
+    {
+
     }
 
     public function onClose($server, $fd)
