@@ -39,6 +39,7 @@ class Ws {
     {
         echo "receive from {$frame->fd} : {$frame->data}, opcode : {$frame->opcode}, fin : {$frame->finish} \n";
 
+        print_r($frame->data);
         static::$server->task($frame->data, 0);
 
     }
