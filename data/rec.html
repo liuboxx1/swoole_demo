@@ -33,37 +33,9 @@
         }
         setTimeout(draw, 100);
     }
-    navigator.getUserMedia=navigator.getUserMedia||navigator.webkitGetUserMedia||navigator.mozGetUserMedia||navigator.msGetUserMedia;navigator.getUserMedia({video:true,audio: true},gotStream,noStream);//
-    navigator.getUserMedia({video:true, audio:false}, success, console.log);
-
-    //成功打开摄像头
-    function gotStream(stream){
-        video.src =URL.createObjectURL(stream)
-
-        video.onerror= function(){
-
-            stream.stop()
-
-        }
-
-        stream.onended = noStream
-
-
-        video.onloadedmetadata =function(){
-
-            alert("成功打开摄像头")
-
-        }
-
-    }//打开摄像头失败
-
-    function noStream(error){
-        alert(error)
-    }
-    //
-    // document.getElementById("snap").addEventListener("click",function(){
-    //
-    //     context.drawImage(video,0,0,1024,800)});
+    navigator.getUserMedia=navigator.getUserMedia || navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia || navigator.msGetUserMedia;
+    navigator.getUserMedia({video:true, audio:true}, success, console.log);
 </script>
 </body>
 </html>
