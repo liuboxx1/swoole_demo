@@ -33,7 +33,7 @@
         }
         setTimeout(draw, 100);
     }
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
+    navigator.getUserMedia = MediaDevices.getUserMedia() || navigator.webkitGetUserMedia ||
         navigator.mozGetUserMedia || navigator.msGetUserMedia;
     navigator.getUserMedia({video:true, audio:false}, success, console.log);
 </script>
