@@ -23,7 +23,7 @@
             backcontext.drawImage(video,0,0, back.width, back.height);
         }catch(e){
             if (e.name == "NS_ERROR_NOT_AVAILABLE") {
-                return setTimeout(draw, 100);
+                return setTimeout(draw, 10);
             } else {
                 throw e;
             }
